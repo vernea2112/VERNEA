@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VERNEA | Engenharia de Redes e Soluções Digitais</title>
+    <!-- Google Fonts: Montserrat para títulos e Inter para corpo -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* VARIÁVEIS DE DESIGN - Extraídas do Logótipo */
+        :root {
+            --primary-red: #E60000;
+            --dark-red: #800000;
+            --black-accent: #1A1A1A;
+            --grey-text: #4A4A4A;
+            --light-bg: #F9F9F9;
+            --white: #FFFFFF;
+            --transition: all 0.3s ease;
+        }
+
+        /* RESET BÁSICO */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--black-accent);
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
+        }
+
+        a {
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        ul { list-style: none; }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* HEADER */
+        header {
+            background: var(--white);
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 60px; /* Ajuste elegante */
+            width: auto;
+        }
+
+        .contact-top {
+            display: flex;
+            gap: 20px;
+        }
+
+        .btn-contact-small {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--black-accent);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-contact-small i { color: var(--primary-red); }
+
+        .btn-contact-small:hover { color: var(--primary-red); }
+
+        /* HERO SECTION */
+        .hero {
+            background: linear-gradient(135deg, #1A1A1A 0%, #000000 100%);
+            color: var(--white);
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
+            opacity: 0.1;
+        }
+
+        .hero-content { position: relative; z-index: 1; }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #ffffff, #ff4d4d);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            color: #ccc;
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, var(--primary-red), var(--dark-red));
+            color: var(--white);
+            padding: 18px 35px;
+            border-radius: 5px;
+            font-weight: 700;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(230, 0, 0, 0.3);
+            text-transform: uppercase;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(230, 0, 0, 0.5);
+        }
+
+        /* SECTIONS GENERAL */
+        section { padding: 80px 0; }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 25%; width: 50%;
+            height: 4px; background: var(--primary-red);
+        }
+
+        /* QUEM SOMOS */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text p { margin-bottom: 20px; font-size: 1.1rem; color: var(--grey-text); }
+
+        .highlight-box {
+            background: var(--light-bg);
+            padding: 30px;
+            border-left: 5px solid var(--primary-red);
+            font-style: italic;
+        }
+
+        /* SERVIÇOS (GRID) */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 40px;
+            border: 1px solid #eee;
+            transition: var(--transition);
+            border-bottom: 3px solid transparent;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-bottom: 3px solid var(--primary-red);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .service-card i {
+            font-size: 3rem;
+            color: var(--primary-red);
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 { font-size: 1.2rem; margin-bottom: 15px; color: var(--black-accent); }
+        .service-card ul { font-size: 0.9rem; color: var(--grey-text); }
+        .service-card li { margin-bottom: 8px; border-bottom: 1px solid #f0f0f0; padding-bottom: 4px; }
+
+        /* TABELA DE MATRIZ DE VALOR */
+        .matrix-container { overflow-x: auto; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--white);
+            margin-top: 30px;
+        }
+        th { background: var(--black-accent); color: var(--white); padding: 20px; text-align: left; }
+        td { padding: 20px; border-bottom: 1px solid #eee; }
+        tr:nth-child(even) { background: var(--light-bg); }
+
+        /* MÉTODO DE TRABALHO */
+        .method-steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 40px;
+        }
+        .step { text-align: center; }
+        .step-num {
+            width: 60px; height: 60px;
+            background: var(--primary-red);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-weight: 800;
+            font-size: 1.5rem;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #111;
+            color: var(--white);
+            padding: 60px 0 20px;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .footer-logo img { height: 70px; margin-bottom: 20px; filter: brightness(1.2); }
+        .footer-info h4 { margin-bottom: 20px; color: var(--primary-red); }
+        .footer-info a { color: #ccc; display: block; margin-bottom: 10px; }
+        .footer-info a:hover { color: var(--white); }
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #222;
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        /* RESPONSIVIDADE */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .about-grid { grid-template-columns: 1fr; }
+            .method-steps { grid-template-columns: 1fr 1fr; gap: 30px; }
+            .contact-top { display: none; } /* Esconde contactos no header em mobile para limpar UI */
+            nav { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <img src="vernealogo5.png" alt="Logótipo VERNEA">
+                </div>
+                <div class="contact-top">
+                    <a href="tel:+244934004044" class="btn-contact-small">
+                        <i class="fas fa-phone"></i> +244 934 004 044
+                    </a>
+                    <a href="mailto:verneageral@gmail.com" class="btn-contact-small">
+                        <i class="fas fa-envelope"></i> verneageral@gmail.com
+                    </a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>Engenharia de Redes e Soluções Digitais</h1>
+            <p>Implementamos a estabilidade e a segurança de que o seu negócio precisa para crescer. Uma parceira tecnológica completa (One-Stop Shop) para o mercado B2B.</p>
+            <a href="mailto:verneageral@gmail.com" class="cta-button">Solicitar Consultoria Proativa</a>
+        </div>
+    </section>
+
+    <!-- QUEM SOMOS -->
+    <section id="sobre">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-text">
+                    <div class="section-title" style="text-align: left;">
+                        <h2>Quem Somos</h2>
+                    </div>
+                    <p>A <strong>VERNEA</strong> é uma empresa especializada em consultoria de TI e integração de sistemas tecnológicos. Nascemos com o propósito de desenhar, implementar e gerir infraestruturas tecnológicas complexas.</p>
+                    <p>Aliamos a robustez da engenharia de redes à agilidade do desenvolvimento web para garantir que a sua empresa opere com a máxima performance e continuidade de negócio.</p>
+                    <div class="highlight-box">
+                        "Não vendemos apenas tecnologia; implementamos a estabilidade e a segurança."
+                    </div>
+                </div>
+                <div class="about-img">
+                    <!-- Representação visual dos dois pilares -->
+                    <div style="background: var(--light-bg); padding: 40px; border-radius: 15px; text-align: center;">
+                        <h3 style="color: var(--primary-red); margin-bottom: 20px;">VERNEA 2026</h3>
+                        <p><strong>Digital:</strong> Software, Streaming e Web</p>
+                        <hr style="margin: 15px 0; border: 0; border-top: 1px solid #ddd;">
+                        <p><strong>Engenharia:</strong> Redes, Servidores e Segurança</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVIÇOS -->
+    <section id="servicos" style="background-color: var(--light-bg);">
+        <div class="container">
+            <div class="section-title">
+                <h2>Catálogo de Especialidades</h2>
+            </div>
+            <div class="services-grid">
+                <!-- REDES -->
+                <div class="service-card">
+                    <i class="fas fa-network-wired"></i>
+                    <h3>Redes & Servidores</h3>
+                    <ul>
+                        <li>Cablagem Estruturada e Wi-Fi Corporativo</li>
+                        <li>Configuração de VLANs e Tráfego</li>
+                        <li>Active Directory & Linux Servers</li>
+                        <li>Firewalls Avançadas (pfSense)</li>
+                        <li>VPNs Seguras (Tailscale/OpenVPN)</li>
+                    </ul>
+                </div>
+                <!-- WEB -->
+                <div class="service-card">
+                    <i class="fas fa-code"></i>
+                    <h3>Plataformas Web</h3>
+                    <ul>
+                        <li>Websites Corporativos (SEO Ready)</li>
+                        <li>Dashboards e Automação (PHP/MySQL)</li>
+                        <li>Microsites e Portais de Registo</li>
+                        <li>Alojamento Cloud e Gestão DNS</li>
+                        <li>Certificados de Segurança SSL</li>
+                    </ul>
+                </div>
+                <!-- CCTV -->
+                <div class="service-card">
+                    <i class="fas fa-video"></i>
+                    <h3>Sistemas CCTV</h3>
+                    <ul>
+                        <li>Videovigilância IP e Analógica HD</li>
+                        <li>Centralização de Imagens em NVRs</li>
+                        <li>Acesso Remoto via Smartphone</li>
+                        <li>Controlo de Acessos e Biometria</li>
+                        <li>Relatórios de Assiduidade (iVMS)</li>
+                    </ul>
+                </div>
+                <!-- GPS -->
+                <div class="service-card">
+                    <i class="fas fa-satellite"></i>
+                    <h3>Gestão de Frotas</h3>
+                    <ul>
+                        <li>Instalação de Localizadores GPS Ocultos</li>
+                        <li>Plataformas de Rastreio em Tempo Real</li>
+                        <li>Cercas Virtuais (Geofencing)</li>
+                        <li>Alertas de Velocidade e Histórico</li>
+                        <li>Otimização de Consumo de Combustível</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MATRIZ DE VALOR -->
+    <section>
+        <div class="container">
+            <div class="section-title">
+                <h2>Porquê a VERNEA?</h2>
+            </div>
+            <div class="matrix-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>O Que Garantimos</th>
+                            <th>Como Executamos</th>
+                            <th>Benefício Para o Seu Negócio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Continuidade de Negócio</strong></td>
+                            <td>Manutenção preventiva, substituição de massa térmica e limpeza de racks.</td>
+                            <td>Zero paragens inesperadas nos seus sistemas críticos.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Arquitetura Escalável</strong></td>
+                            <td>Redes desenhadas para o crescimento a 3 e 5 anos.</td>
+                            <td>Evita investimentos duplicados no futuro.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Abordagem Centralizada</strong></td>
+                            <td>Gestão de rede, site, segurança e frota num só local.</td>
+                            <td>Um único interlocutor técnico, poupando tempo valioso.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- MÉTODO -->
+    <section style="background-color: var(--black-accent); color: var(--white);">
+        <div class="container">
+            <div class="section-title">
+                <h2 style="color: var(--white);">O Nosso Método</h2>
+            </div>
+            <div class="method-steps">
+                <div class="step">
+                    <div class="step-num">1</div>
+                    <h4>Diagnóstico</h4>
+                    <p style="font-size: 0.85rem; color: #aaa; margin-top: 10px;">Auditoria de vulnerabilidades e qualidade Wi-Fi.</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">2</div>
+                    <h4>Projeto</h4>
+                    <p style="font-size: 0.85rem; color: #aaa; margin-top: 10px;">Desenho da arquitetura ideal para o seu orçamento.</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">3</div>
+                    <h4>Implementação</h4>
+                    <p style="font-size: 0.85rem; color: #aaa; margin-top: 10px;">Execução limpa com mínimo impacto na operação.</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">4</div>
+                    <h4>Suporte</h4>
+                    <p style="font-size: 0.85rem; color: #aaa; margin-top: 10px;">Monitorização contínua e manutenção programada.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-logo">
+                    <img src="vernealogo5.png" alt="Vernea Logo">
+                    <p style="color: #888; font-size: 0.9rem;">Prestação de Serviços e Soluções TI. Engenharia de Redes, Infraestrutura e Soluções Digitais.</p>
+                </div>
+                <div class="footer-info">
+                    <h4>Contactos Rápidos</h4>
+                    <a href="tel:+244934004044"><i class="fas fa-phone"></i> +244 934 004 044</a>
+                    <a href="mailto:verneageral@gmail.com"><i class="fas fa-envelope"></i> verneageral@gmail.com</a>
+                </div>
+                <div class="footer-info">
+                    <h4>Localização</h4>
+                    <p style="color: #ccc;">Luanda, Angola</p>
+                    <p style="color: #ccc; margin-top: 10px;">Disponibilidade para projetos nacionais e internacionais.</p>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2024-2026 VERNEA. Todos os direitos reservados.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
