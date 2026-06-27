@@ -248,6 +248,17 @@
             font-size: 1.5rem;
         }
 
+        /* ESTILO DO MAPA */
+        .map-wrapper {
+            max-width: 1000px;
+            margin: 0 auto;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            line-height: 0;
+            border: 1px solid #eee;
+        }
+
         /* FOOTER */
         footer {
             background: #111;
@@ -466,6 +477,26 @@
         </div>
     </section>
 
+    <!-- LOCALIZAÇÃO -->
+    <section id="localizacao" style="background-color: var(--light-bg);">
+        <div class="container">
+            <div class="section-title">
+                <h2>Localização</h2>
+            </div>
+            <div class="map-wrapper">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3187.3442721307442!2d13.1933308!3d-8.894798399999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1a51f5d0b20edc59%3A0x66f4c45ba8fc0397!2sVERNEA%20-%20PRESTA%C3%87AO%20DE%20SERVI%C3%87OS%2C%20LDA!5e1!3m2!1sen!2sao!4v1782588924306!5m2!1sen!2sao" 
+                    width="100%" 
+                    height="450" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="strict-origin-when-cross-origin">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
     <!-- FOOTER -->
     <footer>
         <div class="container">
@@ -481,8 +512,8 @@
                 </div>
                 <div class="footer-info">
                     <h4>Localização</h4>
-                    <p style="color: #ccc;">Luanda, Angola</p>
-                    <p style="color: #ccc; margin-top: 10px;">Disponibilidade para projetos dentro e fora de Luanda.</p>
+                    <p style="color: #ccc;">Av. 21 de Janeiro | Ed. Hermussil </p>
+                    <p style="color: #ccc; margin-top: 10px;">Disponibilidade para projetos nacionais e internacionais.</p>
                 </div>
             </div>
             <div class="copyright">
